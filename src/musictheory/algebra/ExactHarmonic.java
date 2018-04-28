@@ -1,10 +1,10 @@
-package algebra;
+package musictheory.algebra;
 
 import java.util.ArrayList;
 
-import music.Phrase;
-import music.Chord;
-import music.Note;
+import musictheory.music.Phrase;
+import musictheory.music.Chord;
+import musictheory.music.Note;
 
 /**
  * Provides a quasi-Algebra implementation of the pure harmonic algebra
@@ -57,7 +57,7 @@ public class ExactHarmonic {
 
         return phases;
     }
-    
+
     public double[] magnify(float A, Phrase P) {
         double[] orig = P.phases(r);
         double[] phases = new double[orig.length];
@@ -68,7 +68,7 @@ public class ExactHarmonic {
 
         return phases;
     }
-    
+
     public double[] product(Phrase P1, Phrase P2) {
         if (! Phrase.sameKey(P1, P2))
             throw new IllegalArgumentException("Cannot mix phrases of different key");
@@ -122,7 +122,7 @@ public class ExactHarmonic {
                 phases[Npc*i+j] = phase;
             }
         }
-        
+
         System.out.println("Done");
         return phases;
     }

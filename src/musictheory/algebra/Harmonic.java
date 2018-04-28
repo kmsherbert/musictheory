@@ -1,8 +1,8 @@
-package algebra;
+package musictheory.algebra;
 
-import music.Note;
-import music.Chord;
-import music.Phrase;
+import musictheory.music.Note;
+import musictheory.music.Chord;
+import musictheory.music.Phrase;
 
 import java.util.HashMap;
 

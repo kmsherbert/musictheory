@@ -1,4 +1,4 @@
-package music;
+package musictheory.music;
 
 import java.util.Map;
 import java.util.Arrays;

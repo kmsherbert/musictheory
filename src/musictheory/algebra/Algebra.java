@@ -1,6 +1,6 @@
-package algebra;
+package musictheory.algebra;
 
-import music.Phrase;
+import musictheory.music.Phrase;
 
 /**
  * standard interface for the algebras this project defines

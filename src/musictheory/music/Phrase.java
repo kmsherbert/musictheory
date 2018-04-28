@@ -1,4 +1,4 @@
-package music;
+package musictheory.music;
 
 import java.io.PrintStream;
 
@@ -175,7 +175,7 @@ public class Phrase {
                 phases[Npc*i+j] = phase;
             }
         }
-        
+
         return phases;
     }
 
@@ -228,7 +228,7 @@ public class Phrase {
                 return new Phrase(chords, key, bpm, cpb/r);
             }
         }
-        
+
         return this;    // no compression possible
     }
 

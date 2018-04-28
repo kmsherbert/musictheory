@@ -1,4 +1,4 @@
-package algebra;
+package musictheory.algebra;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -9,9 +9,9 @@ import org.jlinalg.polynomial.PolynomialLongDivisionResult;
 import org.jlinalg.Matrix;
 import org.jlinalg.Vector;
 
-import music.Phrase;
-import music.Chord;
-import music.Note;
+import musictheory.music.Phrase;
+import musictheory.music.Chord;
+import musictheory.music.Note;
 
 /**
  * Algebra implementing the Galois Algebra described in report.pdf
@@ -110,7 +110,7 @@ public class Galois implements Algebra {
             throw new IllegalArgumentException("Cannot mix phrases of different key");
         if (! Phrase.sameTempo(P1, P2))
             throw new IllegalArgumentException("Cannot mix phrases of different tempo");
-        
+
         int cpb = Phrase.lcm_cpb(P1, P2);
         P1 = P1.expand(cpb);
         P2 = P2.expand(cpb);
@@ -146,7 +146,7 @@ public class Galois implements Algebra {
     private Polynomial<F2M12> inverse(Polynomial<F2M12> a) {
         Polynomial<F2M12> xp = new Polynomial<>(F2M12.FACTORY.zero());
         Polynomial<F2M12> x = new Polynomial<>(F2M12.FACTORY.one());
-        
+
         PolynomialLongDivisionResult<F2M12> divmod = M.longDivision(a);
         while (! divmod.getRemainder().isZero()) {
             Polynomial<F2M12> temp = x;
@@ -202,7 +202,7 @@ public class Galois implements Algebra {
 
         Polynomial<F2M12> X = asPolynomial(P1).multiply(asPolynomial(P2));
         X = X.subtract(new Polynomial<F2M12>(F2M12.FACTORY.one()));
-        
+
         // user may wish to factor X if possible, but that's their problem
         return X;
     }
@@ -310,7 +310,7 @@ public class Galois implements Algebra {
             int f = Note.f(C.N(i).p, k);
             co[f] = co[f] || C.A(i) > 0;
         }
-        
+
         return new F2M12(co);
     }
 

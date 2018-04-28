@@ -1,4 +1,4 @@
-package algebra;
+package musictheory.algebra;
 
 import java.util.ArrayList;
 
@@ -7,9 +7,9 @@ import org.jlinalg.Matrix;
 import org.jlinalg.Vector;
 import org.jlinalg.doublewrapper.DoubleWrapper;
 
-import music.Note;
-import music.Chord;
-import music.Phrase;
+import musictheory.music.Note;
+import musictheory.music.Chord;
+import musictheory.music.Phrase;
 
 /**
  * Algebra implementing the Linear Algebra described in report.pdf
@@ -94,7 +94,7 @@ public class Linear implements Algebra {
         Matrix<DoubleWrapper> Xt = X.transpose();
         Matrix<DoubleWrapper> XXt = X.multiply(Xt);
         Matrix<DoubleWrapper> XtX = Xt.multiply(X);
-        
+
         Matrix<DoubleWrapper> L = eigenMatrix(XXt);
         Matrix<DoubleWrapper> D = deltaMatrix(XXt, L);
         Matrix<DoubleWrapper> R = eigenMatrix(XtX);
@@ -120,7 +120,7 @@ public class Linear implements Algebra {
         D = D_pattern(D, best_i);
 
         Matrix<DoubleWrapper> It = L.multiply(D.inverse()).multiply(R.transpose());
-        
+
         return asPhrase(It, P.key, P.bpm, P.cpb);
     }
 
@@ -254,7 +254,7 @@ public class Linear implements Algebra {
         for (int i = 0; i < r; i ++) {
             Vector<DoubleWrapper> E = powerIteration(M, i,r);
             DoubleWrapper eig = eigenvalue(M,E);
-            
+
             X.setCol(i+1, E);
             M = M.subtract( E.transposeAndMultiply(E).multiply(eig) );
         }
@@ -316,7 +316,7 @@ public class Linear implements Algebra {
         for (int i = 0; i < C.length; i ++) {
             amps[Note.f(C.N(i).p, k)] += C.A(i);
         }
-        
+
         return new Vector<DoubleWrapper>(amps, DoubleWrapper.FACTORY);
     }
 
@@ -327,7 +327,7 @@ public class Linear implements Algebra {
         // also account for valid negative numbers!
         Vector<DoubleWrapper> mV = V.multiply(DoubleWrapper.FACTORY.m_one());
         wt += (int)(mV.gt(eps).sum().getValue());
-        
+
         Note[] notes = new Note[wt];
         float[] amps = new float[wt];
 

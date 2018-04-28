@@ -1,6 +1,6 @@
-package algebra;
+package musictheory.algebra;
 
-import algebra.F2M12.F2M12Factory;
+import musictheory.algebra.F2M12.F2M12Factory;
 import java.util.Random;
 
 import org.jlinalg.JLinAlgTypeProperties;
@@ -82,7 +82,7 @@ public class F2M12 extends FieldElement<F2M12> {
 
 		return new F2M12(product);
 	}
-	
+
 	public F2M12 pow(int e) {
 		F2M12 p = ONE;
 		for (int i = 1; i <= e; i ++) p = p.multiply(this);
@@ -92,7 +92,7 @@ public class F2M12 extends FieldElement<F2M12> {
     public F2M12 negate() {
         return this;	// negatives mean nothing in p=2
 	}
-	
+
 	public F2M12 invert() {
 		if (this.equals(ZERO)) throw new IllegalArgumentException("Cannot divide by zero");
 
@@ -162,7 +162,7 @@ public class F2M12 extends FieldElement<F2M12> {
 			}
 
 			divmod recur = new divmod(new_p, a);	// yes I made a recursive constructor
-			
+
 			boolean[] q = new boolean[12];
 			for (int i = 0; i < q.length; i ++) q[i] = recur.Q.co[i]; // copy quotient
 			q[d] = true;							// include this iteration
@@ -197,7 +197,7 @@ public class F2M12 extends FieldElement<F2M12> {
 
 	private static final F2M12 ZERO = new F2M12();
 	private static final F2M12 ONE = new F2M12(1);
-	
+
 	public static final F2M12Factory FACTORY = ZERO.new F2M12Factory();
 
 

@@ -1,4 +1,4 @@
-package music;
+package musictheory.music;
 
 /**
  * Models a "note" as a pitch (ex. "c") and an octave (ex. "4")

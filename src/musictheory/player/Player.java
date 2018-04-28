@@ -1,11 +1,11 @@
 /**
  * Player.java: provides functions to interface Javas SoundAPI with Phrases and their .phases() arrays
  */
-package player;
+package musictheory.player;
 
-import music.Phrase;
-import music.Chord;
-import music.Note;
+import musictheory.music.Phrase;
+import musictheory.music.Chord;
+import musictheory.music.Note;
 
 import java.util.ArrayList;
 
